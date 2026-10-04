@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --obsidian: #0b0f17;
+  --cyan: #00f2fe;
+  --emerald: #34f5a5;
+  --glass: rgba(14, 22, 36, 0.55);
+  --border: rgba(0, 242, 254, 0.22);
+}
+
+html {
+  background: var(--obsidian);
+  color-scheme: dark;
+  /* reserve scrollbar width so page swaps never shift layout */
+  scrollbar-gutter: stable;
+}
+
+body {
+  background: var(--obsidian);
+  color: #e6edf7;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(0, 242, 254, 0.3);
+}
+
+@layer components {
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 10px 40px rgba(0, 0, 0, 0.45);
+  }
+
+  .glass-glow:hover {
+    border-color: rgba(0, 242, 254, 0.55);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 32px rgba(0, 242, 254, 0.18),
+      0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, #00f2fe, #34f5a5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.25em] text-cyan-glow/80;
+  }
+}
+
+/* Cursor lighting overlay used by TiltCard */
+.spot {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(0, 242, 254, 0.16),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.tilt-host:hover .spot {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
