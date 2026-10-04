@@ -4,7 +4,7 @@ A front-end showcase of a multi-tenant enterprise portal: live tenant isolation,
 role-based access control and an operations dashboard, wrapped in a real-time
 3D WebGL interface.
 
-**Live demo:** <add your Vercel link after deploying>
+**Live demo:** https://nexus-portal-taupe-six.vercel.app
 
 ## Highlights
 
